@@ -1,0 +1,9 @@
+.idea
+bin/
+cmake-build-debug/
+CMakeLists.txt
+sensor_mock.cpp
+predix_setup.py
+setup_requirements.txt
+*.pyc
+__pycache__

@@ -1,0 +1,41 @@
+PREDIX SENSOR EMULATION IN C++
+==============================
+
+
+Video: https://youtu.be/sSZGdNOWs2o
+
+
+Verification
+------------
+
+  * Tested in:
+    - Ubuntu Linux 16.04 LTS with GCC 5.4
+    - Windows 7 with MS VS 2017
+    - MacOSX "Sierra" with XCode 
+
+  * Follow the README.md file to setup, build and run the application.
+    - The Predix setup is fully automated, requiring the user to run a Python script after 
+      installing requirements with "pip".
+
+  * Let it run for a while. It should:
+    - Fetch an OAuth2 access token using UAA
+    - Emulate sensor data "sampling" and queue for sending to Predix.
+    - In a another thread, a "sender" send the messages in the queue to Predix.
+
+  * Bonus features:
+    - You can check the code to see that the network I/O does block the periodic sampling.
+    - You can disable your networking while the program is running and reconnect. It will 
+      keep sampling and try to reconnect until it successful, then send multiple messages.
+
+  * Verification server:
+    - You can check the data was correctly sent to Predix and can be queried by using the
+      bundled verification server.
+    - The server is installed and configured automatically as part of the Python setup 
+      script.
+    - To get the server URL, call `bin/cf apps` and check the URL of the `tc-predix` app.
+      Then access at `https://<tc-predix-url>`. After a while it should show some of the
+      uploaded data. Note: mind the HTTPS, it will not work in regular HTTP.
+
+  * Cleanup:
+    - Call "python setup/predix_setup.py --clean" to cleanup the Predix environment, in
+      case you want to test the code in other OS.

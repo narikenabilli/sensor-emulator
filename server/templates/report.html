@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predix C++ Demo</title>
+    <style>
+        body {
+            font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+            font-size: 12pt;
+        }
+        td {
+            border: 1px solid;
+            padding: 3px 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>
+    Latest data from TIMESERIES service
+</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Tag</th>
+        <th>Timestamp</th>
+        <th style="text-align: right">Value</th>
+        <th>Quality</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in ts_data %}
+    <tr>
+        <td> {{ item.tag }}</td>
+        <td> {{ item.timestamp | to_date }}</td>
+        <td style="text-align: right"> {{ item.val }}</td>
+        <td> {{ item.quality }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h3>
+    Data from ASSET service (first 1000)
+</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Sensor ID</th>
+        <th>Timestamp</th>
+        <th style="text-align: right">Value</th>
+        <th>Message</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in asset_data %}
+    <tr>
+        <td> {{ item.sensor_id }}</td>
+        <td> {{ item.timestamp | to_date }}</td>
+        <td style="text-align: right"> {{ item.val }}</td>
+        <td> {{ item.msg }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
