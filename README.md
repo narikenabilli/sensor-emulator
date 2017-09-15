@@ -1,6 +1,11 @@
 PREDIX SENSOR EMULATION IN C++
 ==============================
 
+About
+-------------------
+Built by [cjalmeida](https://www.topcoder.com/members/cjalmeida/) on topcoder.com
+
+Challenge Details: https://www.topcoder.com/challenge-details/30057804/?type=develop&noncache=true
 
 System requirements
 -------------------
